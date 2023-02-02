@@ -5,10 +5,12 @@ describe("CRUD Operations for Coffess =)!!", () => {
     it("Obteniendo un statusCode 200 =)!! de un Arreglo con 1 Objeto mínimo =)!!", async () => {
         const response = await request(server).get("/cafes").send()
         const { body } = await request(server).get("/cafes").send()
-        const coffee = body
+        const coffees = body
+        const coffee = {"id": 1, "nombre": "Cortado"}     
         const status = response.statusCode
         expect(status).toBe(200)
-        expect(coffee).toBeInstanceOf(Array)
+        expect(coffees).toBeInstanceOf(Array)
+        expect(coffees).toContainEqual(coffee)
     })
     it("Obteniendo un 404 =)!! Cuando borramos un un Producto que no Existe =)!!", async () => {
 
